@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="Verity Logo.png" alt="Organization Banner" />
+</div>
+
 # Verity
 
 > **Building open specification infrastructure for verifiable digital interactions.**
