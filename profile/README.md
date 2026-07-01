@@ -74,11 +74,14 @@ Specifications define behavior. Implementations demonstrate behavior. Conformanc
 | Phase | Name | Status |
 |-------|------|--------|
 | **I** | Specification Foundation | ✅ Complete |
-| **II** | Platform Foundation | ✅ Complete |
-| **III** | Protocol Engineering | 🚧 **Current** |
-| **IV** | Ecosystem & Adoption | ⏳ Planned |
+| **II** | Engineering Platform | ✅ Complete |
+| **III** | Protocol Expansion | 🚧 **Current** |
+| **IV** | Independent Implementations | ⏳ Planned |
+| **V** | Adoption | ⏳ Planned |
 
-Phase II delivered the **platform spine**: validated spec input, a reference interpreter public contract, and a runnable conformance harness. Phase III deepens **protocol semantics**—real claim and evidence models, verification rules, and VP-CS scenarios grounded in normative RFCs.
+Phase I established normative architecture, governance, and the specification corpus. Phase II delivered the **engineering platform**: validated spec input, a reference interpreter, and a runnable conformance harness that consumes specification-published VP-CS scenarios.
+
+Phase III **expands the protocol** on top of that platform—normative claim and evidence semantics, verification rules, and VP-CS coverage grounded in accepted RFCs. The platform exists; the work now is growing what the protocol means and proving it across implementations.
 
 See [SPECIFICATION_STATUS.md](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/SPECIFICATION_STATUS.md) in `veritypay-spec` for specification maturity detail.
 
@@ -86,12 +89,11 @@ See [SPECIFICATION_STATUS.md](https://github.com/VerityPay-Inc/veritypay-spec/bl
 
 ## Next Priorities
 
-- **Real claim model** — beyond minimal fixtures; aligned with [DATA_MODEL.md](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/docs/01-architecture/DATA_MODEL.md)
-- **Real evidence model** — typed evidence content and claim linkage
-- **Verification rule RFCs** — normative rules the reference interpreter implements
-- **First VP-CS scenarios** — authored in `veritypay-spec`, executed by `veritypay-conformance`
-- **Interpreter implementation of protocol semantics** — broader rule coverage in `veritypay-reference`
-- **Conformance coverage** — expand VP-CS catalog and adapter integrations as semantics land
+- **Accept and extend protocol RFCs** — move draft semantics (e.g. [VP-RFC-0001](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/rfcs/0001-minimal-claim-evidence-semantics.md)) toward governed acceptance
+- **Expand verification rules** — additional VP-RULE coverage in `veritypay-reference` as RFCs land
+- **Grow VP-CS catalog** — normative scenarios authored in `veritypay-spec`, executed by `veritypay-conformance`
+- **Deepen claim and evidence models** — align [DATA_MODEL.md](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/docs/01-architecture/DATA_MODEL.md) with accepted protocol semantics
+- **Prepare for independent implementations** — adapters, self-attestation, and cross-vendor testing paths (Phase IV)
 
 ---
 
