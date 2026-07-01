@@ -4,99 +4,112 @@
 
 # Verity
 
-> **Building open specification infrastructure for verifiable digital interactions.**
+> **Open specification infrastructure for verifiable digital interactions.**
 
-Verity is an open engineering initiative dedicated to creating durable, implementation-independent specifications that anyone can inspect, implement, and improve.
+Verity is an ecosystem of repositories with a single responsibility each: define protocol meaning, validate the corpus, execute reference semantics, and compare independent implementations honestly.
 
 We believe protocols should outlive products, specifications should precede implementation, and interoperability should emerge from shared standards—not shared vendors.
 
 ---
 
-# Our Mission
+## Our Mission
 
 Our mission is to build public infrastructure that makes digital interactions more transparent, verifiable, and interoperable.
 
-Rather than creating closed platforms, we create open specifications that enable independent implementations and long-term ecosystem growth.
-
-Every repository in this organization contributes to that mission.
+Rather than creating closed platforms, we create open specifications and the **platform tooling** that keeps them coherent, executable, and testable—so independent implementations can converge on the same behavior.
 
 ---
 
-# The Verity Specification Platform
+## Current Platform Status
 
-The Verity Specification Platform is the engineering ecosystem used to design, validate, execute, and evolve open protocol specifications.
+| Repository | Role | Status |
+|------------|------|--------|
+| [**veritypay-spec**](https://github.com/VerityPay-Inc/veritypay-spec) | Specification foundation — normative protocol meaning | **Specification Foundation** |
+| [**veritypay-tooling**](https://github.com/VerityPay-Inc/veritypay-tooling) | Validation — registries, cross-references, Edition manifests | **Validation Platform Ready** |
+| [**veritypay-reference**](https://github.com/VerityPay-Inc/veritypay-reference) | Reference interpreter — executable oracle for verification | **Reference Interpreter Ready** |
+| [**veritypay-conformance**](https://github.com/VerityPay-Inc/veritypay-conformance) | Conformance suite — VP-CS scenarios vs reference outcomes | **Conformance Platform Ready** |
 
-It is composed of several independent repositories, each with a single responsibility.
-
-| Repository | Purpose | Status |
-|------------|---------|--------|
-| **veritypay-spec** | Canonical VerityPay specification | 🟢 Active |
-| **veritypay-tooling** | Specification validation and publication tooling | 🟡 Planned |
-| **veritypay-reference** | Reference interpreter (executable specification) | ⚪ Planned |
-| **veritypay-conformance** | Conformance suite and interoperability testing | ⚪ Planned |
-| **veritypay-examples** | Educational examples and reference integrations | ⚪ Planned |
-
-Future repositories may include language SDKs, documentation websites, and additional protocol specifications.
+Each repository has **one primary job**. Together they form the Verity Specification Platform.
 
 ---
 
-# Current Focus
+## Platform Architecture
 
-We are currently preparing the **Genesis Edition** of the VerityPay Specification.
+Four repositories. One pipeline. No entangled responsibilities.
 
-Current priorities include:
+```text
+┌─────────────────────────────────────────────────────────────┐
+│                     veritypay-spec                          │
+│  Normative protocol · VP-CS meaning · governance & RFCs    │
+└───────────────────────────┬─────────────────────────────────┘
+                            │ authoritative corpus
+                            ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   veritypay-tooling                         │
+│  vp validate · vp-spec-model · registry & edition checks   │
+└───────────────────────────┬─────────────────────────────────┘
+                            │ validated specification input
+              ┌─────────────┴─────────────┐
+              ▼                           ▼
+┌─────────────────────────┐   ┌─────────────────────────────┐
+│   veritypay-reference   │   │   veritypay-conformance   │
+│   Reference oracle      │   │   VP-CS harness           │
+│   Interpreter::evaluate │   │   load · run · compare    │
+└────────────┬────────────┘   └──────────────┬──────────────┘
+             │                               │
+             └───────────┬───────────────────┘
+                         ▼
+              Independent implementations
+              (adapters · products · CI)
+```
 
-- Finalizing the public specification
-- Building specification tooling
-- Creating the reference interpreter
-- Establishing automated conformance testing
-- Preparing contributor-ready implementation repositories
+**Flow:** Spec defines meaning → Tooling proves the corpus is coherent → Reference produces expected outcomes → Conformance compares implementations to that oracle.
 
-See **SPECIFICATION_STATUS.md** inside `veritypay-spec` for current project maturity.
+Specifications define behavior. Implementations demonstrate behavior. Conformance proves behavior.
 
 ---
 
-# Engineering Philosophy
+## Current Phase
 
-Everything we build follows a simple hierarchy.
+| Phase | Name | Status |
+|-------|------|--------|
+| **I** | Specification Foundation | ✅ Complete |
+| **II** | Platform Foundation | ✅ Complete |
+| **III** | Protocol Engineering | 🚧 **Current** |
+| **IV** | Ecosystem & Adoption | ⏳ Planned |
+
+Phase II delivered the **platform spine**: validated spec input, a reference interpreter public contract, and a runnable conformance harness. Phase III deepens **protocol semantics**—real claim and evidence models, verification rules, and VP-CS scenarios grounded in normative RFCs.
+
+See [SPECIFICATION_STATUS.md](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/SPECIFICATION_STATUS.md) in `veritypay-spec` for specification maturity detail.
+
+---
+
+## Next Priorities
+
+- **Real claim model** — beyond minimal fixtures; aligned with [DATA_MODEL.md](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/docs/01-architecture/DATA_MODEL.md)
+- **Real evidence model** — typed evidence content and claim linkage
+- **Verification rule RFCs** — normative rules the reference interpreter implements
+- **First VP-CS scenarios** — authored in `veritypay-spec`, executed by `veritypay-conformance`
+- **Interpreter implementation of protocol semantics** — broader rule coverage in `veritypay-reference`
+- **Conformance coverage** — expand VP-CS catalog and adapter integrations as semantics land
+
+---
+
+## Engineering Philosophy
 
 ```text
 Research
-
-↓
-
+   ↓
 Specification
-
-↓
-
+   ↓
 Validation
-
-↓
-
+   ↓
 Implementation
-
-↓
-
+   ↓
 Conformance
-
-↓
-
+   ↓
 Community
 ```
-
-Specifications define behavior.
-
-Implementations demonstrate behavior.
-
-Conformance proves behavior.
-
----
-
-# Repository Principles
-
-Every repository has exactly one primary responsibility.
-
-Repositories communicate through published specifications rather than hidden implementation details.
 
 We optimize for:
 
@@ -106,54 +119,23 @@ We optimize for:
 - Interoperability over lock-in
 - Long-term maintainability over short-term velocity
 
----
-
-# Contributing
-
-We welcome contributors interested in:
-
-- Protocol design
-- Documentation
-- Specification tooling
-- Reference implementations
-- Testing
-- Examples
-- Developer experience
-
-Before contributing, start with:
-
-1. `veritypay-spec`
-2. `CONTRIBUTING.md`
-3. `SPECIFICATION_STATUS.md`
-4. `VP-RFC-0000`
-
-Protocol changes begin with RFCs.
-
-Engineering decisions are recorded through ADRs.
+Protocol changes begin with **RFCs** in `veritypay-spec`. Engineering decisions are recorded through **ADRs** in each repository.
 
 ---
 
-# Roadmap
+## Contributing
 
-### Phase I — Institutionalize the Specification
+We welcome contributors interested in protocol design, documentation, validation tooling, reference semantics, conformance harnesses, and developer experience.
 
-✅ Complete
+**Start here:**
 
-### Phase II — Build the Specification Platform
-
-🟡 In Progress
-
-### Phase III — Enable Independent Implementations
-
-⚪ Planned
-
-### Phase IV — Ecosystem Growth
-
-⚪ Planned
+1. [veritypay-spec](https://github.com/VerityPay-Inc/veritypay-spec) — read `CONTRIBUTING.md` and `SPECIFICATION_STATUS.md`
+2. [VP-RFC-0000](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/rfcs/0000-rfc-process.md) — how protocol changes are proposed
+3. Sibling repo `ROADMAP.md` — capability milestones for tooling, reference, and conformance
 
 ---
 
-# Why Open?
+## Why Open?
 
 Open specifications create stronger ecosystems than closed implementations.
 
@@ -165,8 +147,6 @@ Public engineering creates durable infrastructure.
 
 ---
 
-# Build With Us
+## Build With Us
 
-Verity exists to create engineering infrastructure that anyone can understand, implement, and improve.
-
-If you believe specifications should be public, interoperable, and built to outlive their creators, we'd love to build with you.
+If you believe specifications should be public, platforms should be composable, and conformance should be honest—we'd love to build with you.
