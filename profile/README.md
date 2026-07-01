@@ -29,7 +29,11 @@ Rather than creating closed platforms, we create open specifications and the **p
 | [**veritypay-reference**](https://github.com/VerityPay-Inc/veritypay-reference) | Reference interpreter — executable oracle for verification | **Reference Interpreter Ready** |
 | [**veritypay-conformance**](https://github.com/VerityPay-Inc/veritypay-conformance) | Conformance suite — VP-CS scenarios vs reference outcomes | **Conformance Platform Ready** |
 
-Each repository has **one primary job**. Together they form the Verity Specification Platform.
+Each repository has **one primary job**. Together they form **Verity Platform 1.0** — the Verity Specification Platform.
+
+**Verity Platform 1.0** consists of `veritypay-spec`, `veritypay-tooling`, `veritypay-reference`, and `veritypay-conformance`. Phase II (**Engineering Platform**) is complete: validation, reference execution, and conformance run as a coordinated ecosystem. Future work primarily **expands protocol capabilities**—RFCs, verification rules, and VP-CS scenarios—on top of this foundation rather than rebuilding platform architecture.
+
+For compatible repository baselines, see [PLATFORM_RELEASES.md](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/PLATFORM_RELEASES.md) in `veritypay-spec`.
 
 ---
 
@@ -77,13 +81,13 @@ Specifications define behavior. Implementations demonstrate behavior. Conformanc
 | **II** | Engineering Platform | ✅ Complete |
 | **III** | Protocol Expansion | 🚧 **Current** |
 | **IV** | Independent Implementations | ⏳ Planned |
-| **V** | Adoption | ⏳ Planned |
+| **V** | Ecosystem & Adoption | ⏳ Planned |
 
-Phase I established normative architecture, governance, and the specification corpus. Phase II delivered the **engineering platform**: validated spec input, a reference interpreter, and a runnable conformance harness that consumes specification-published VP-CS scenarios.
+Phase I established normative architecture, governance, and the specification corpus. Phase II delivered the **engineering platform**: validated spec input, a reference interpreter, and a runnable conformance harness that consumes specification-published VP-CS scenarios. **Platform 1.0** names that complete baseline.
 
-Phase III **expands the protocol** on top of that platform—normative claim and evidence semantics, verification rules, and VP-CS coverage grounded in accepted RFCs. The platform exists; the work now is growing what the protocol means and proving it across implementations.
+Phase III **expands the protocol** on top of Platform 1.0—normative claim and evidence semantics, verification rules, and VP-CS coverage grounded in accepted RFCs. The platform architecture exists; the work now is growing what the protocol means and proving it across implementations.
 
-See [SPECIFICATION_STATUS.md](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/SPECIFICATION_STATUS.md) in `veritypay-spec` for specification maturity detail.
+See [SPECIFICATION_STATUS.md](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/SPECIFICATION_STATUS.md) for specification maturity detail and [PLATFORM_RELEASES.md](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/PLATFORM_RELEASES.md) for official compatibility across repositories.
 
 ---
 
@@ -131,7 +135,7 @@ We welcome contributors interested in protocol design, documentation, validation
 
 **Start here:**
 
-1. [veritypay-spec](https://github.com/VerityPay-Inc/veritypay-spec) — read `CONTRIBUTING.md` and `SPECIFICATION_STATUS.md`
+1. [veritypay-spec](https://github.com/VerityPay-Inc/veritypay-spec) — read `CONTRIBUTING.md`, `SPECIFICATION_STATUS.md`, and [PLATFORM_RELEASES.md](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/PLATFORM_RELEASES.md)
 2. [VP-RFC-0000](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/rfcs/0000-rfc-process.md) — how protocol changes are proposed
 3. Sibling repo `ROADMAP.md` — capability milestones for tooling, reference, and conformance
 
