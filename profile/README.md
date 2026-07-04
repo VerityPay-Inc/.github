@@ -29,9 +29,9 @@ Rather than creating closed platforms, we create open specifications and the **p
 | [**veritypay-reference**](https://github.com/VerityPay-Inc/veritypay-reference) | Reference interpreter — executable oracle for verification | **Reference Interpreter Ready** |
 | [**veritypay-conformance**](https://github.com/VerityPay-Inc/veritypay-conformance) | Conformance suite — VP-CS scenarios vs reference outcomes | **Conformance Platform Ready** |
 
-Each repository has **one primary job**. Together they form **Verity Platform 1.0** — the Verity Specification Platform.
+Each repository has **one primary job**. Together they form the **Verity Specification Platform**.
 
-**Verity Platform 1.0** consists of `veritypay-spec`, `veritypay-tooling`, `veritypay-reference`, and `veritypay-conformance`. Phase II (**Engineering Platform**) is complete: validation, reference execution, and conformance run as a coordinated ecosystem. Future work primarily **expands protocol capabilities**—RFCs, verification rules, and VP-CS scenarios—on top of this foundation rather than rebuilding platform architecture.
+**Current platform release:** **[Platform 1.2](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/PLATFORM_RELEASES.md)** — extends Platform 1.1 with accepted **VP-RFC-0003** and **VP-RFC-0004**. **Verity Platform 1.0** names the first coordinated engineering baseline (validation, reference execution, conformance harness). Phase II (**Engineering Platform**) is complete. Draft **Platform 1.3** engineering work (`normalized_text`, VP-CS-0011–0013) is in progress atop Platform 1.2; normative acceptance of **VP-RFC-0011** remains pending.
 
 For compatible repository baselines, see [PLATFORM_RELEASES.md](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/PLATFORM_RELEASES.md) in `veritypay-spec`.
 
@@ -50,9 +50,15 @@ Four repositories. One pipeline. No entangled responsibilities.
                             ▼
 ┌─────────────────────────────────────────────────────────────┐
 │                   veritypay-tooling                         │
-│  vp validate · vp-spec-model · registry & edition checks   │
+│  vp validate · registry & edition checks                   │
 └───────────────────────────┬─────────────────────────────────┘
                             │ validated specification input
+                            ▼
+┌─────────────────────────────────────────────────────────────┐
+│                     vp-spec-model                           │
+│  Typed registries · document corpus · reference graph      │
+└───────────────────────────┬─────────────────────────────────┘
+                            │
               ┌─────────────┴─────────────┐
               ▼                           ▼
 ┌─────────────────────────┐   ┌─────────────────────────────┐
@@ -93,7 +99,7 @@ See [SPECIFICATION_STATUS.md](https://github.com/VerityPay-Inc/veritypay-spec/bl
 
 ## Next Priorities
 
-- **Accept and extend protocol RFCs** — move draft semantics (e.g. [VP-RFC-0001](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/rfcs/0001-minimal-claim-evidence-semantics.md)) toward governed acceptance
+- **Accept draft protocol RFCs** — move semantics such as **`normalized_text`** ([VP-RFC-0011](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/rfcs/0011-normalized-text-assertion.md)) and assertion taxonomy ([VP-RFC-0005](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/rfcs/0005-assertion-types.md)) toward governed acceptance
 - **Expand verification rules** — additional VP-RULE coverage in `veritypay-reference` as RFCs land
 - **Grow VP-CS catalog** — normative scenarios authored in `veritypay-spec`, executed by `veritypay-conformance`
 - **Deepen claim and evidence models** — align [DATA_MODEL.md](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/docs/01-architecture/DATA_MODEL.md) with accepted protocol semantics
@@ -136,8 +142,9 @@ We welcome contributors interested in protocol design, documentation, validation
 **Start here:**
 
 1. [veritypay-spec](https://github.com/VerityPay-Inc/veritypay-spec) — read `CONTRIBUTING.md`, `SPECIFICATION_STATUS.md`, and [PLATFORM_RELEASES.md](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/PLATFORM_RELEASES.md)
-2. [VP-RFC-0000](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/rfcs/0000-rfc-process.md) — how protocol changes are proposed
-3. Sibling repo `ROADMAP.md` — capability milestones for tooling, reference, and conformance
+2. [ECOSYSTEM.md](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/ECOSYSTEM.md) — role-specific reading order
+3. [VP-RFC-0000](https://github.com/VerityPay-Inc/veritypay-spec/blob/main/rfcs/0000-rfc-process.md) — how protocol changes are proposed
+4. Sibling repo `ROADMAP.md` — capability milestones for tooling, reference, and conformance
 
 ---
 
